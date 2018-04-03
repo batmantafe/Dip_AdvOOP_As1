@@ -4,31 +4,43 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement;
 
-public class PlayerInput : MonoBehaviour
+using UnityEngine.Networking;
+
+public class PlayerInput : NetworkBehaviour
 {
     public float forwardSpeed;
     public float rotateSpeed;
 
+    public GameObject MainCamera;
+
     // Use this for initialization
     void Start()
     {
-        Cursor.visible = false;
+        if (isLocalPlayer)
+        {
+            LocalPlayerStartSetup();
 
-        forwardSpeed = 100f;
+            Cursor.visible = false;
 
-        rotateSpeed = 50f;
+            forwardSpeed = 100f;
+
+            rotateSpeed = 50f;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        ForwardMovement();
+        if (isLocalPlayer)
+        {
+            ForwardMovement();
 
-        VerticalRotate();
+            VerticalRotate();
 
-        ChangeMode();
+            ChangeMode();
 
-        Shortcuts();
+            Shortcuts();
+        }
     }
 
     void ForwardMovement()
@@ -85,5 +97,10 @@ public class PlayerInput : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+    void LocalPlayerStartSetup()
+    {
+        MainCamera.SetActive(true);
     }
 }

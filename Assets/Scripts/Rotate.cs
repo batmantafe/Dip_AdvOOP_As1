@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
-    public float rotateSpeed;
+    public int xSpeed, ySpeed, zSpeed;
 
     // Use this for initialization
     void Start()
     {
-        rotateSpeed = 10;
+        xSpeed = Random.Range(15,46);
+        ySpeed = Random.Range(15, 46);
+        zSpeed = Random.Range(15, 46);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * (rotateSpeed * Time.deltaTime));
+        transform.Rotate(new Vector3 (xSpeed, ySpeed, zSpeed) * Time.deltaTime);
     }
 }

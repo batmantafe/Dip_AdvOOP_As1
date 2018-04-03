@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//using UnityEngine.Networking;
+
 //this script can be found in the Component section under the option Character Set Up 
 //Mouse Look
 
 [AddComponentMenu("Character Set Up/Mouse Look")]
 
-public class MouseLook : MonoBehaviour 
+public class MouseLook : MonoBehaviour
 {
     //Before you write this section please scroll to the bottom of the page
     #region Variables
@@ -38,6 +40,7 @@ public class MouseLook : MonoBehaviour
     #region Start
     void Start()
     {
+
         //if our game object has a rigidbody attached to it
         if (this.GetComponent<Rigidbody>())
         {
@@ -46,11 +49,13 @@ public class MouseLook : MonoBehaviour
         }
 
         Cursor.visible = false;
+
     }
     #endregion
     #region Update
     void Update()
     {
+
         #region Mouse X and Y
         //if our axis is set to Mouse X and Y
         if (axis == RotationalAxis.MouseXAndY)
@@ -91,8 +96,9 @@ public class MouseLook : MonoBehaviour
             transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
         }
         #endregion
+
     }
-	#endregion
+    #endregion
 }
 #region RotationalAxis
 /*
