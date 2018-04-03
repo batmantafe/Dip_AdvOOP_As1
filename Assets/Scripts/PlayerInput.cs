@@ -19,12 +19,6 @@ public class PlayerInput : NetworkBehaviour
         if (isLocalPlayer)
         {
             LocalPlayerStartSetup();
-
-            Cursor.visible = false;
-
-            forwardSpeed = 100f;
-
-            rotateSpeed = 50f;
         }
     }
 
@@ -36,8 +30,6 @@ public class PlayerInput : NetworkBehaviour
             ForwardMovement();
 
             VerticalRotate();
-
-            ChangeMode();
 
             Shortcuts();
         }
@@ -71,21 +63,6 @@ public class PlayerInput : NetworkBehaviour
         }
     }
 
-    void ChangeMode()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            forwardSpeed = 200f;
-            rotateSpeed = 25f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            forwardSpeed = 50f;
-            rotateSpeed = 100f;
-        }
-    }
-
     void Shortcuts()
     {
         if (Input.GetKeyDown(KeyCode.F1))
@@ -102,5 +79,11 @@ public class PlayerInput : NetworkBehaviour
     void LocalPlayerStartSetup()
     {
         MainCamera.SetActive(true);
+
+        Cursor.visible = false;
+
+        forwardSpeed = 100f;
+
+        rotateSpeed = 50f;
     }
 }
